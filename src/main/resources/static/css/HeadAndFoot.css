@@ -1,0 +1,28 @@
+#titles{
+    color: #ff0000;
+    font-size: 40px;
+    text-align: center;
+}
+
+#headnav{
+    background-color: #ffffff;
+    border-top: solid;
+    border-bottom: solid;
+}
+ul{
+    text-align: center;
+}
+.heli{
+    font-size: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-left: solid 3px black;
+    border-right: solid 3px black;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: inline-block;}
+#asides{
+    width: 30%;
+    border: solid;
+    margin: 20px;
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>記事</title>
+    <link rel="stylesheet" th:href="@{/css/stylesheet.css}">
+    <link rel="stylesheet" th:href="@{/css/HeadAndFoot.css}">
+</head>
+<body>
+<div th:replace="common_1 :: Header"></div>
+<h1 th:text="${article.title}"></h1>
+<div th:each="block : ${article.blocks}">
+    <p th:if="${block.type.name() == 'TEXT'}"
+       th:text="${block.content}"></p>
+
+    <h3 th:if="${block.type.name() == 'SUBTITLE'}"
+        th:text="${block.content}"></h3>
+
+    <img th:if="${block.type.name() == 'IMAGE'}"
+         th:src="${block.url}"  alt="IMG"/>
+
+    <a th:if="${block.type.name() == 'LINK'}"
+       th:href="${block.url}"
+       th:text="${block.content}"></a>
+</div>
+<!-- 記事へのコメント
+    <div><p>name</p><p>naiyou<p/></div>
+-->
+
+<!-- 関連記事　オススメなど -->
+<div th:replace="aside :: aside"></div>
+<div th:replace="common_1 :: Footer"></div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+#maas{
+    display: flex;
+}
+
+main{
+    width: 70%;
+    border: solid;
+    margin: 10px;
+    padding: 10px;
+}
+
+aside{
+    width: 30%;
+    border: solid;
+    margin: 20px;
+}
+.imgs{
+    width: 180px;
+    height: 180px;
+    margin: 10px;
+}
+
+.artart{
+    display: flex;
+}
+
+.heli{
+    font-size: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-left: solid;
+    border-right: solid;
+    margin-left: 10px;
+    margin-right: 10px;
+    list-style:none;
+    display: inline-block;
+}
+
+.articles{
+    height: 200px;
+    margin: 40px;
+    border: solid;
+
+}
+.pagination button {
+    margin: 2px;
+    padding: 6px 10px;
+}
+
+.pagination .active {
+    background-color: #333;
+    color: white;
+}
+.firsts{
+
+}

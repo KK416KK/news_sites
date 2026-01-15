@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/stylesheet.css}">
+    <link rel="stylesheet" th:href="@{/css/HeadAndFoot.css}">
+</head>
+<body>
+<header th:replace="common_1 :: Header"></header>
+<main>
+    <form th:action="@{/official/Official}">
+        <div th:each="article : ${page}">
+            <h2>
+                <a th:href="@{Official/{id_a}(id_a=${article.id})}" th:text="${article.title}"></a>
+            </h2>
+<!--            <p th:text="${article.summary}"></p>-->
+        </div>
+<!--        <ul>-->
+<!--            <li th:each="article : ${articles}">-->
+<!--                <a th:href="@{/{id}(id=${article.id})}">-->
+<!--                    <span th:text="${article.title}"></span>-->
+<!--                </a>-->
+<!--            </li>-->
+<!--        </ul>-->
+        <div class="pagination">
+            <a th:if="${page.hasPrevious()}"
+               th:href="@{?page=${page.number - 1}}">前</a>
+
+            <a th:if="${page.hasNext()}"
+               th:href="@{?page=${page.number + 1}}">次</a>
+
+<!--            &lt;!&ndash; 前へ &ndash;&gt;-->
+<!--            <button-->
+<!--                    th:if="${currentPage > 0}"-->
+<!--                    th:onclick="|movePage(${currentPage - 1})|">-->
+<!--                前へ-->
+<!--            </button>-->
+
+<!--            &lt;!&ndash; ページ番号 &ndash;&gt;-->
+<!--            <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">-->
+<!--    <button-->
+<!--            th:text="${i + 1}"-->
+<!--            th:classappend="${i == currentPage} ? 'active'"-->
+<!--            th:onclick="|movePage(${i})|">-->
+<!--    </button>-->
+<!--  </span>-->
+
+<!--            &lt;!&ndash; 次へ &ndash;&gt;-->
+<!--            <button-->
+<!--                    th:if="${currentPage < totalPages - 1}"-->
+<!--                    th:onclick="|movePage(${currentPage + 1})|">-->
+<!--                次へ-->
+<!--            </button>-->
+
+        </div>
+    </form>
+</main>
+<aside th:replace="aside :: aside"></aside>
+<footer th:replace="common_1 :: Footer"></footer>
+</body>
+</html>

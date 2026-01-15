@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<header th:fragment="Header">
+  <h1 id="titles">Antilla News</h1>
+  <nav id="headnav">
+    <ul>
+      <!--
+      公式:自社で調査したニュース
+      公認:契約した他社のニュース
+      個人:一般ユーザーが書いたニュース
+      検証:個人のニュースを自社で調査・検証したことの報告
+      -->
+      <li class="heli"><a th:href="@{/Home}">HOME</a></li>
+      <li class="heli"><a th:href="@{/official/Official}">公式</a></li>
+      <li class="heli"><a th:href="@{/official/recognize}">公認</a></li>
+      <li class="heli"><a th:href="@{/official/Personal}">個人</a></li>
+      <li class="heli"><a th:href="@{/official/vertificate}">検証</a></li>
+    </ul>
+  </nav>
+</header>
+<footer th:fragment="Footer"></footer>
+</html>

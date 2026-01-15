@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>投稿</title>
+  <link rel="stylesheet" th:href="@{/css/stylesheet.css}">
+  <link rel="stylesheet" th:href="@{/css/HeadAndFoot.css}">
+  <script>
+    let order = 0;
+     function addText(){
+       addBlock("TEXT","文章を入力","textarea");
+     }
+     function addSubTitle(){
+       addBlock("SUBTITLE","小見出し","input")
+     }
+     //type="file"に変更予定
+     function addImage(){
+       addBlock("IMAGE","画像Url","input")
+     }
+     function addLink(){
+       addBlock("LINK","リンクを追加","input")
+     }
+     //remove()
+     function addBlock(type, holder,inputType){
+       //要素を生成:div
+       const div = document.createElement("div");
+       //挿入する内容
+       let inputHtml = "";
+       if (inputType === "textarea") {
+         inputHtml = `<textarea name="contents" placeholder="${holder}"></textarea>`;
+       } else {
+         inputHtml = `<input name="contents" placeholder="${holder}">`;
+       }
+       //div内に要素を追加（カラのdivの中身を置き換えている）
+       div.innerHTML = `
+      <input type="hidden" name="types" value="${type}">
+      <input type="hidden" name="orders" value="${order++}">
+      ${inputHtml}
+    `;
+       //<main>に要素を追加
+       document.getElementById("editor").appendChild(div);
+     }
+  </script>
+</head>
+<body>
+<div th:replace="common_1 :: Header"></div>
+
+<form th:action="@{/Mypage/Posting}" method="POST">
+  <div class="layout">
+    <aside class="sidebar">
+      <button type="button" onclick="addText()">＋文章</button>
+      <button type="button" onclick="addSubTitle()">＋小見出し</button>
+      <!--
+      <button type="button" onclick="addImage()">＋画像</button>
+      <button type="button" onclick="addLink()">＋リンク</button>
+      -->
+
+      <hr>
+      <button type="submit">投稿</button>
+    </aside>
+
+    <main id="editor" class="editor">
+        <input type="text" name="title">
+      <!-- ブロックを追加 -->
+    </main>
+  </div>
+</form>
+
+<div th:replace="common_1 :: Footer"></div>
+</body>
+</html>

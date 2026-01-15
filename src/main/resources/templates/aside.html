@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<aside th:fragment="aside">
+    <nav id="asides">
+        <ul>
+            <li class="sidever"><a th:href="@{/Userconfig/NewUser}">新規アカウント</a></li>
+            <li class="sidever"><a th:href="@{/Userconfig/Login}">ログイン</a></li>
+            <li class="sidever"><a th:href="@{/Mypage/Mypage}">マイページ</a></li>
+            <li class="sidever"><a th:href="@{/Mypage/Posting}">記事を投稿</a></li>
+        </ul>
+    </nav>
+    <!-- おすすめ記事 -->
+</aside>
+</body>
+</html>
