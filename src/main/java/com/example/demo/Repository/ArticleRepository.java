@@ -15,7 +15,7 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
             ArticleSouce source,
             Pageable pageable
     );
-    //
+    //JPQLのためこの書き方
     @Query("""
         SELECT a FROM Article a
         WHERE a.createdAt >= :from

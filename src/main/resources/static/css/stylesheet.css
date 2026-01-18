@@ -1,5 +1,9 @@
-#maas{
+.mains{
     display: flex;
+}
+
+.airts{
+    border-bottom: solid;
 }
 
 main{
@@ -42,6 +46,7 @@ aside{
     border: solid;
 
 }
+
 .pagination button {
     margin: 2px;
     padding: 6px 10px;

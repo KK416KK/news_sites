@@ -23,12 +23,16 @@ public class Article {
     @Enumerated(EnumType.STRING)
     private ArticleSouce source;
 
-    //
+    //記事ブロックとのリレーション
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderBy("orderNo ASC")
     private List<ArticleBlock> blocks = new ArrayList<>();
 
     //コメント
+    @OneToMany(mappedBy = "article")
+    private List<Comments> comments;
+
+    //記事にタグなど
 
     public void addBlock(ArticleBlock block) {
         blocks.add(block);

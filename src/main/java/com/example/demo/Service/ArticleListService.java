@@ -28,9 +28,8 @@ public class ArticleListService {
     }
 
     public Page<Article> Getart(ArticleSouce source, Pageable pageable){
-        Page<Article> article = articleRepository.findBySourceOrderByCreatedAtDesc(source,pageable);
-
-        return article;
+        //ソース(enumのタイプ)からデータベースを取得
+        return articleRepository.findBySourceOrderByCreatedAtDesc(source,pageable);
     }
     public Page<Article> getPopularLast31Days(Pageable pageable) {
         //３１日以内の記事

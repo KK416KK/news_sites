@@ -8,8 +8,17 @@
 </head>
 <body>
 <div th:replace="common_1 :: Header"></div>
-
-<div th:replace="aside :: aside"></div>
+<div class="mains">
+    <main>
+        <div th:each="article : ${list}">
+            <h2>
+                <a th:href="@{/official/Personal/{id_a}(id_a=${article.id})}" th:text="${article.title}"></a>
+            </h2>
+            <p th:text="${summaries}"></p>
+        </div>
+    </main>
+    <div th:replace="aside :: aside"></div>
+</div>
 <div th:replace="common_1 :: Footer"></div>
 </body>
 </html>

@@ -40,4 +40,17 @@ public class ArticleController {
         articleRepository.save(article);
         return "Articles";
     }
+    @GetMapping("article/{id_a}")
+    public String article(
+            @PathVariable Long id_a,
+            Model model
+    ){
+        //IDから記事を探す
+        Article article = articleRepository.findById(id_a).orElseThrow(() -> new RuntimeException("記事がありません"));
+        model.addAttribute("article",article);
+
+        article.incrementViewCount();
+        articleRepository.save(article);
+        return "Articles";
+    }
 }

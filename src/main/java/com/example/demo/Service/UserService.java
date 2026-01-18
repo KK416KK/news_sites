@@ -32,12 +32,12 @@ public class UserService implements UserDetailsService {
 
         return userRepository.save(users);
     }
-
+    //ログイン
     public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException{
+        //ユーザーネーム(userID)からデータを探す
         Users user = userRepository.findByUserId(userId)
                 .orElseThrow(() ->
                         new UsernameNotFoundException("not found"));
-
         return User.builder()
                 .username(user.getUserId())
                 .password(user.getPassword())

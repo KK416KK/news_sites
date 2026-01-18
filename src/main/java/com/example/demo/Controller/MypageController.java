@@ -45,14 +45,17 @@ public class MypageController {
         }else{
             article.setTitle(title);
         }
-        //article.setType(user.)
+        //ユーザーのroleで変える予定
         article.setSource(ArticleSouce.PERSONAL);
 
         //記事を要素に分けて保存
         for (int i = 0; i < types.size(); i++) {
             ArticleBlock block = new ArticleBlock();
+            //文章か画像かなど
             block.setType(BlockType.valueOf(types.get(i)));
+            //記事に挿入する順番
             block.setOrderNo(orders.get(i));
+            //内容
             block.setContent(contents.get(i));
             article.addBlock(block);
         }

@@ -20,10 +20,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/official")
 public class officialController {
-    private final ArticleRepository articleRepository;
-
-    public officialController(ArticleRepository articleRepository, ArticleListService service) {
-        this.articleRepository = articleRepository;
+    public officialController(ArticleListService service) {
         this.service = service;
     }
     private final ArticleListService service;
@@ -32,12 +29,17 @@ public class officialController {
     @GetMapping("/Official")
     public String official(@PageableDefault(size = 30) Pageable pageable,
                            Model model){
-        Page<Article> page = articleRepository.findBySourceOrderByCreatedAtDesc(
-                        ArticleSouce.OFFICIAL, pageable);
-        model.addAttribute("page", page);
+        Page<Article> articles = service.Getart(ArticleSouce.OFFICIAL,pageable);
+        List<Article> list = articles.getContent();
+
+        //ニュースのあらすじを取得
+        //String summary = service.getSummary(articles.)
+        model.addAttribute("article", articles);
+        model.addAttribute("list", list);
+        model.addAttribute("summaries","ニュースあらすじ");
         return "/official/Official";
     }
-    //
+    //個人投稿のニュース
     @GetMapping("/Personal")
     public String personal(@PageableDefault(size = 30) Pageable pageable,
             Model model){
@@ -53,12 +55,29 @@ public class officialController {
     }
 
     @GetMapping("/recognize")
-    public String recognize(Model model){
+    public String recognize(@PageableDefault(size = 30) Pageable pageable,
+                            Model model){
+        Page<Article> articles = service.Getart(ArticleSouce.RECOGNIZE,pageable);
+        List<Article> list = articles.getContent();
+
+        //ニュースのあらすじを取得
+        //String summary = service.getSummary(articles.)
+        model.addAttribute("article", articles);
+        model.addAttribute("list", list);
+        model.addAttribute("summaries","ニュースあらすじ");
         return "official/recognize";
     }
     @GetMapping("/vertificate")
-    public String vertificate(Model model){
+    public String vertificate(@PageableDefault(size = 30) Pageable pageable,
+                              Model model){
+        Page<Article> articles = service.Getart(ArticleSouce.VERTIFICATE,pageable);
+        List<Article> list = articles.getContent();
+
+        //ニュースのあらすじを取得
+        //String summary = service.getSummary(articles.)
+        model.addAttribute("article", articles);
+        model.addAttribute("list", list);
+        model.addAttribute("summaries","ニュースあらすじ");
         return "official/vertificate";
     }
-
 }

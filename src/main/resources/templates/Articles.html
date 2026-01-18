@@ -23,9 +23,20 @@
        th:href="${block.url}"
        th:text="${block.content}"></a>
 </div>
-<!-- 記事へのコメント
-    <div><p>name</p><p>naiyou<p/></div>
--->
+<!-- 記事へのコメント -->
+<div>
+    <h3>コメント</h3>
+    <div th:each="comment : ${article.comments}">
+        <p th:text="${comment.texts}"></p>
+    </div>
+    <h3>コメント投稿フォーム</h3>
+    <form th:action="@{article}" >
+        <label>
+            <input type="text" name="comments">
+        </label>
+        <button type="submit">投稿</button>
+    </form>
+</div>
 
 <!-- 関連記事　オススメなど -->
 <div th:replace="aside :: aside"></div>

@@ -7,42 +7,44 @@
     <link rel="stylesheet" th:href="@{/css/HeadAndFoot.css}">
 </head>
 <body>
-<div th:replace="common_1 :: Header"></div>
-<main>
-    <form th:action="@{/Home}" method="post">
-        <div>
-            <h2>人気記事</h2>
+<header th:replace="common_1 :: Header"></header>
+<div class="mains">
+    <main>
+        <form th:action="@{/Home}" method="post">
             <div>
+                <h2>人気記事</h2>
                 <div>
-                    <img id="img" alt="" src="">
-                    <h2></h2>
-                    <p></p>
-                </div>
-                <div id="firsts">
                     <div>
-                        <img class="imgs" alt="" src="">
+                        <img id="img" alt="" src="">
                         <h2></h2>
                         <p></p>
                     </div>
-                    <div>
-                        <img class="imgs" alt="" src="">
-                        <h2></h2>
-                        <p></p>
+                    <div id="firsts">
+                        <div>
+                            <img class="imgs" alt="" src="">
+                            <h2></h2>
+                            <p></p>
+                        </div>
+                        <div>
+                            <img class="imgs" alt="" src="">
+                            <h2></h2>
+                            <p></p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div>
-            <h2>新着人気記事</h2>
-            <div></div>
-        </div>
-        <div>
-            <h2>人気記事</h2>
-            <div></div>
-        </div>
-    </form>
-</main>
-<div th:replace="aside :: aside"></div>
-<div th:replace="common_1 :: Footer"></div>
+            <div>
+                <h2>新着人気記事</h2>
+                <div></div>
+            </div>
+            <div>
+                <h2>人気記事</h2>
+                <div></div>
+            </div>
+        </form>
+    </main>
+    <aside th:replace="aside :: aside"></aside>
+</div>
+<footer th:replace="common_1 :: Footer"></footer>
 </body>
 </html>
