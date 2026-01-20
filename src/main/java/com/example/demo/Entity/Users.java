@@ -25,5 +25,7 @@ public class Users {
     private String role;
     @OneToMany(mappedBy = "users")
     private List<Comments> comments;
+    @OneToMany(mappedBy = "users")
+    private  List<Article> article;
 
 }

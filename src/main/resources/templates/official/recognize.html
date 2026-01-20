@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>ニュース</title>
     <link rel="stylesheet" th:href="@{/css/stylesheet.css}">
     <link rel="stylesheet" th:href="@{/css/HeadAndFoot.css}">
 </head>
@@ -14,7 +14,7 @@
             <h2>
                 <a th:href="@{/official/Personal/{id_a}(id_a=${article.id})}" th:text="${article.title}"></a>
             </h2>
-            <p th:text="${summaries}"></p>
+            <p th:text="${#strings.abbreviate(article.summary, 30)}"></p>
         </div>
     </main>
     <div th:replace="aside :: aside"></div>

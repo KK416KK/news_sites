@@ -1,3 +1,6 @@
 spring:
   application:
     name: NEWS_SITE
+upload:
+  image-path: C:/Users/あなた/Desktop/news_site/upload/img
+  image-url: /img/

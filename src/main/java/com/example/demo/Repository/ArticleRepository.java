@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 public interface ArticleRepository extends JpaRepository<Article, Long> {
     Page<Article> findBySourceOrderByCreatedAtDesc(
@@ -25,4 +26,7 @@ public interface ArticleRepository extends JpaRepository<Article, Long> {
             @Param("from") LocalDateTime from,
             Pageable pageable
     );
+
+    @Override
+    Optional<Article> findById(Long id);
 }

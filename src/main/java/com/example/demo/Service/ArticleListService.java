@@ -19,6 +19,7 @@ public class ArticleListService {
         this.articleRepository = articleRepository;
     }
 
+    //記事の最初の文章を取得
     public String getSummary(Article article) {
         return article.getBlocks().stream()
                 .filter(b -> b.getType() == BlockType.TEXT)
@@ -27,10 +28,12 @@ public class ArticleListService {
                 .orElse("");
     }
 
+    //表示する記事を取得
     public Page<Article> Getart(ArticleSouce source, Pageable pageable){
         //ソース(enumのタイプ)からデータベースを取得
         return articleRepository.findBySourceOrderByCreatedAtDesc(source,pageable);
     }
+    //１か月以内に投稿された記事を取得
     public Page<Article> getPopularLast31Days(Pageable pageable) {
         //３１日以内の記事
         LocalDateTime from = LocalDateTime.now().minusDays(31);

@@ -19,6 +19,7 @@ public class UserService implements UserDetailsService {
         this.userRepository = a;
         this.passwordEncoder = passwordEncoder;
     }
+    //ユーザーを追加
     public Users user_register(String id, String pass,String email, String name){
         if(userRepository.findByUserId(id).isPresent()){
             throw new RuntimeException("そのIDはすでに存在します");

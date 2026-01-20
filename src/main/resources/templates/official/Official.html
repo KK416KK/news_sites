@@ -11,10 +11,12 @@
 <div class="mains">
     <main>
         <div th:each="article : ${list}" class="airts">
-            <h2>
-                <a th:href="@{/official/Personal/{id_a}(id_a=${article.id})}" th:text="${article.title}"></a>
-            </h2>
-            <p th:text="${summaries}"></p>
+            <div class="lists">
+                <h2>
+                    <a th:href="@{/official/Personal/{id_a}(id_a=${article.id})}" th:text="${article.title}"></a>
+                </h2>
+                <p th:text="${#strings.abbreviate(article.summary, 30)}"></p>
+            </div>
         </div>
     </main>
     <div th:replace="aside :: aside"></div>

@@ -32,6 +32,9 @@ public class Article {
     @OneToMany(mappedBy = "article")
     private List<Comments> comments;
 
+    @ManyToOne
+    private Users users;
+
     //記事にタグなど
 
     public void addBlock(ArticleBlock block) {
@@ -41,4 +44,7 @@ public class Article {
     public void incrementViewCount() {
         this.viewCount++;
     }
+
+    @Transient
+    public String summary;
 }

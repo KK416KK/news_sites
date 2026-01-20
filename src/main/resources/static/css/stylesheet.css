@@ -6,6 +6,17 @@
     border-bottom: solid;
 }
 
+.lists{
+    border-bottom: solid;
+    margin: 10px;
+}
+.userr{
+    border: solid;
+    text-align: center;
+    margin: 20px;
+    padding: 10px;
+}
+
 main{
     width: 70%;
     border: solid;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
 <head>
     <meta charset="UTF-8">
     <title>マイページ</title>
@@ -10,6 +10,17 @@
 <div th:replace="common_1 :: Header"></div>
 
 <!-- 自分が書いた記事　コメントした記事　お知らせなど -->
+<!-- 記事の更新　記事の削除など -->
+<main>
+    <div>
+        <div th:each="article: ${list}" id="list2">
+            <h2 class="list1">
+                <a th:href="@{/article/{id_a}(id_a=${article.id})}" th:text="${article.title}"></a>
+            </h2>
+        </div>
+    </div>
+<!--    <div th:each="article: ${list}"></div>-->
+</main>
 <div th:replace="aside :: aside"></div>
 <div th:replace="common_1 :: Footer"></div>
 </body>

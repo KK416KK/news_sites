@@ -26,11 +26,11 @@
 <!-- 記事へのコメント -->
 <div>
     <h3>コメント</h3>
-    <div th:each="comment : ${article.comments}">
+    <div th:each="comment : ${Comments}">
         <p th:text="${comment.texts}"></p>
     </div>
     <h3>コメント投稿フォーム</h3>
-    <form th:action="@{article}" >
+    <form th:action="@{/article}" >
         <label>
             <input type="text" name="comments">
         </label>

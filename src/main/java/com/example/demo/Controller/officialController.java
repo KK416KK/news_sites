@@ -4,6 +4,7 @@ import com.example.demo.Entity.Article;
 import com.example.demo.Entity.ArticleSouce;
 import com.example.demo.Repository.ArticleRepository;
 import com.example.demo.Service.ArticleListService;
+import com.example.demo.Service.MyPageService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -44,10 +45,15 @@ public class officialController {
     public String personal(@PageableDefault(size = 30) Pageable pageable,
             Model model){
         Page<Article> articles = service.Getart(ArticleSouce.PERSONAL,pageable);
-        List<Article> list = articles.getContent();
 
         //ニュースのあらすじを取得
-        //String summary = service.getSummary(articles.)
+        for (Article article : articles.getContent()) {
+            String summary = service.getSummary(article);
+            article.setSummary(summary);
+        }
+
+        List<Article> list = articles.getContent();
+
         model.addAttribute("article", articles);
         model.addAttribute("list", list);
         model.addAttribute("summaries","ニュースあらすじ");
@@ -58,10 +64,14 @@ public class officialController {
     public String recognize(@PageableDefault(size = 30) Pageable pageable,
                             Model model){
         Page<Article> articles = service.Getart(ArticleSouce.RECOGNIZE,pageable);
+
+        for (Article article : articles.getContent()) {
+            String summary = service.getSummary(article);
+            article.setSummary(summary);
+        }
+
         List<Article> list = articles.getContent();
 
-        //ニュースのあらすじを取得
-        //String summary = service.getSummary(articles.)
         model.addAttribute("article", articles);
         model.addAttribute("list", list);
         model.addAttribute("summaries","ニュースあらすじ");
@@ -74,7 +84,11 @@ public class officialController {
         List<Article> list = articles.getContent();
 
         //ニュースのあらすじを取得
-        //String summary = service.getSummary(articles.)
+        for (Article article : articles.getContent()) {
+            String summary = service.getSummary(article);
+            article.setSummary(summary);
+        }
+
         model.addAttribute("article", articles);
         model.addAttribute("list", list);
         model.addAttribute("summaries","ニュースあらすじ");

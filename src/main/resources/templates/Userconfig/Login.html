@@ -10,7 +10,7 @@
 <div th:replace="common_1 :: Header"></div>
 <!-- spring securityでログインチェック -->
 <form th:action="@{/login}" method="post">
-    <div>
+    <div class="userr">
         <dl>
             <dt>IDを入力してください</dt>
             <dd><input type="text" name="username"></dd>
@@ -23,6 +23,7 @@
         </p>
     </div>
     <button type="submit">ログイン</button>
+    <a th:href="@{/Userconfig/NewUser}">新規会員登録</a>
 </form>
 <div th:replace="common_1 :: Footer"></div>
 </body>

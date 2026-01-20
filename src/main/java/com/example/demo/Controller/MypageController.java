@@ -5,7 +5,14 @@ import com.example.demo.Entity.ArticleBlock;
 import com.example.demo.Entity.ArticleSouce;
 import com.example.demo.Entity.BlockType;
 import com.example.demo.Repository.ArticleRepository;
+import com.example.demo.Service.MyPageService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,13 +24,20 @@ import java.util.List;
 @RequestMapping("/Mypage")
 public class MypageController {
     private final ArticleRepository articleRepository;
+    private final MyPageService service;
 
-    public MypageController(ArticleRepository articleRepository) {
+    public MypageController(ArticleRepository articleRepository, MyPageService service) {
         this.articleRepository = articleRepository;
+        this.service = service;
     }
 
     @GetMapping("/Mypage")
-    public String mypage(){
+    public String mypage(@PageableDefault(size = 30) Pageable pageable,
+                         @AuthenticationPrincipal UserDetails userDetails,
+                         Model model){
+        String loginId = userDetails.getUsername();
+        List<Article> articlePage = service.article_(pageable,loginId);
+        model.addAttribute("list",articlePage);
         return "/Mypage/Mypage";
     }
     @GetMapping("/Posting")
